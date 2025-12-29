@@ -1,0 +1,85 @@
+import { useState } from 'react';
+import IntroPage from './components/IntroPage';
+import QuestionPage from './components/QuestionPage';
+import ResultPage from './components/ResultPage';
+import { questions, characterResults } from './data/questions';
+
+function App() {
+  const [currentPage, setCurrentPage] = useState('intro');
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [result, setResult] = useState(null);
+
+  const handleStart = () => {
+    setCurrentPage('question');
+    setCurrentQuestionIndex(0);
+    setAnswers([]);
+  };
+
+  const handleAnswer = (type) => {
+    const newAnswers = [...answers, type];
+    setAnswers(newAnswers);
+
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      // 모든 질문 완료 - 결과 계산
+      const calculatedResult = calculateResult(newAnswers);
+      setCurrentPage('result');
+      setResult(calculatedResult);
+    }
+  };
+
+  const calculateResult = (answers) => {
+    const counts = {
+      '스타티': 0,
+      '알지': 0,
+      '핏': 0,
+      '와이즈': 0
+    };
+
+    answers.forEach(answer => {
+      counts[answer]++;
+    });
+
+    // 가장 많이 선택된 타입 찾기
+    let maxCount = 0;
+    let resultType = '스타티';
+    
+    Object.keys(counts).forEach(type => {
+      if (counts[type] > maxCount) {
+        maxCount = counts[type];
+        resultType = type;
+      }
+    });
+
+    return characterResults[resultType];
+  };
+
+  const handleRestart = () => {
+    setCurrentPage('intro');
+    setCurrentQuestionIndex(0);
+    setAnswers([]);
+    setResult(null);
+  };
+
+  return (
+    <div className="App">
+      {currentPage === 'intro' && <IntroPage onStart={handleStart} />}
+      {currentPage === 'question' && (
+        <QuestionPage
+          question={questions[currentQuestionIndex]}
+          currentQuestion={currentQuestionIndex + 1}
+          totalQuestions={questions.length}
+          onAnswer={handleAnswer}
+        />
+      )}
+      {currentPage === 'result' && result && (
+        <ResultPage result={result} onRestart={handleRestart} />
+      )}
+    </div>
+  );
+}
+
+export default App;
+
