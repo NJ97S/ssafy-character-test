@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import './ResultPage.css';
+import { useState } from "react";
+import "./ResultPage.css";
 
 function ResultPage({ result, onRestart }) {
   const characterData = result;
@@ -9,17 +9,17 @@ function ResultPage({ result, onRestart }) {
     <div className="result-container">
       <div className="result-content">
         <div className="result-character-image-wrapper">
-          <div 
+          <div
             className="result-character-background"
-            style={{ 
-              backgroundColor: imageError 
-                ? characterData.color 
-                : `${characterData.color}30`
+            style={{
+              backgroundColor: imageError
+                ? characterData.color
+                : `${characterData.color}30`,
             }}
           >
             {!imageError ? (
-              <img 
-                src={characterData.image} 
+              <img
+                src={characterData.image}
                 alt={characterData.title}
                 className="result-character-image"
                 onError={() => {
@@ -45,9 +45,7 @@ function ResultPage({ result, onRestart }) {
           <p className="result-weakness">{characterData.weakness}</p>
         </div>
 
-        <div className="result-quote">
-          {characterData.quote}
-        </div>
+        <div className="result-quote">{characterData.quote}</div>
 
         <button className="restart-button" onClick={onRestart}>
           다시 검사하기
@@ -58,4 +56,3 @@ function ResultPage({ result, onRestart }) {
 }
 
 export default ResultPage;
-
