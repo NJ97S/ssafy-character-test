@@ -34,6 +34,9 @@
 .intro-title {
   font-size: 2rem;
   font-weight: 700;
+  font-family: "Maplestory", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   color: #333;
   margin-bottom: 12px;
   line-height: 1.3;
@@ -44,7 +47,10 @@
   color: #666;
   margin-bottom: 30px;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
+  font-family: "Maplestory", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 }
 
 .intro-description {
@@ -52,6 +58,10 @@
   color: #666;
   margin-bottom: 30px;
   line-height: 1.6;
+  font-weight: 300;
+  font-family: "Maplestory", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 }
 
 .main-character-image-wrapper {
@@ -76,7 +86,10 @@
   border: none;
   padding: 18px 50px;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: "Maplestory", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
