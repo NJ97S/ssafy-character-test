@@ -40,12 +40,22 @@ function ResultPage({ result, onRestart }) {
         </div>
 
         <div className="result-body">
-          <p className="result-description">{characterData.description}</p>
-          <p className="result-detail">{characterData.detail}</p>
-          <p className="result-weakness">{characterData.weakness}</p>
+          <p className="result-description">
+            {characterData.description.split(",").map((part, index, array) => (
+              <span key={index}>
+                {part.trim()}
+                {index < array.length - 1 && ","}
+                {index < array.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
         </div>
 
-        <div className="result-quote">{characterData.quote}</div>
+        <div className="result-cta">
+          <p className="result-cta-text">
+            당신의 강점이 더욱 빛날 수 있는 곳, SSAFY에서 함께해요!
+          </p>
+        </div>
 
         <button className="restart-button" onClick={onRestart}>
           다시 검사하기
